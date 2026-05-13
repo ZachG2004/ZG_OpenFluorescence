@@ -9,15 +9,16 @@
 %   Ratio       = comparison ./ reference
 %   Rejection   = 1 - comparison ./ reference
 %% Function
-function comparedResults = compareValuesEEM(referenceFile, comparisonFile, outputBase)
+function comparedResults = compareValuesEEM(referenceFile, comparisonFile, outputBasePath)
     % Ensure the output is established
-    if nargin < 3 || isempty(outputBase)
-        outputBase = 'EEM_comparison', comparisonFile;
+    if nargin < 3 || isempty(outputBasePath)
+	[~, compName, ~] = fileparts(comparisonFile);
+	outputBasePath = ['EEM_comparison_' compName];
     end
 
     % Isolate components of each eem matrices
-    ref = loadEEMmatrix(referenceFile);
-    cmp = loadEEMmatric(comparisonFile);
+    ref = loadMatrixEEM(referenceFile);
+    cmp = loadMatrixEEM(comparisonFile);
 
     ex_ref = ref(1, 2:end);
     em_ref = ref(2:end, 1);
@@ -57,10 +58,7 @@ function comparedResults = compareValuesEEM(referenceFile, comparisonFile, outpu
     comparedResults.comparison  = cmp;
     comparedResults.delta       = eem_delta;
     comparedResults.ratio       = eem_ratio;
-    comparedResults.reject      = eem_reject;
-
-    save([outputBase '_comparison.mat'], 'comparedResults');
-
-    eem_heatmap(eem_delta, [outputBase ' | comparison - reference'])
-    eem_heatmap(eem_reject, [outputBase ' | apparent rejection values'])
+    comparedResults.rejection   = eem_reject;
+    comparedResults.threshhold  = threshhold;
+    comparedResults.mask = mask;
 end

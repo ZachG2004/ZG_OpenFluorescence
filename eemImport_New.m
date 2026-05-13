@@ -86,7 +86,7 @@ function output = eemImport_New(inputFile, varargin)
         if isempty(inputFile)
             % Open a selection menu for the user to pick their source doc(s)
             [fn, pn] = uigetfile( ...
-            {'*.csv;*.xls;*.xlsx;*.txt;*.asc;*.dat;*.plt;*.eem;*.eem;*.mat', ...
+            {'*.csv;*.xls;*.xlsx;*.txt;*.asc;*.dat;*.plt;*.eem;*.mat', ...
             'EEM-Compatible Files (*.csv, *.xls, *.txt, *.plt, *.eem, *.mat)'}, ...
             'Select EEM input file for processing');
             % Make sure a(n appropriate) file was selected
@@ -322,7 +322,7 @@ function output = eemImport_New(inputFile, varargin)
     % --------------------------------------
         if opt.makeHeatmap
             if exist('eem_heatmap', 'file') == 2
-                eem_heatmap(eemdata, inputName, [], 'raw', 'useDialog', true);
+                eem_heatmap(eemdata, inputName, [], 'raw', false, 'useDialog', true);
             else
                 figure;
                 imagesc(output.excitation, output.emission, output.fluorescence);
