@@ -1,9 +1,11 @@
 The original Fluorescence Toolbox for MATLAB(r) software library was developed by Wade Sheldon, at the University of Georgia
-      (c)1999 by Wade Sheldon \n
-      Department of Marine Sciences \n
-      University of Georgia \n
-      Athens, Georgia  30602-3636 \n
-      sheldon@uga.edu \n
+      
+      (c)1999 by Wade Sheldon
+      Department of Marine Sciences
+      University of Georgia 
+      Athens, Georgia  30602-3636
+      sheldon@uga.edu
+      
 I have contributed the following additional files to this toolbox:
   - loadMatrixEEM.m
   - makeFileEEM.m
